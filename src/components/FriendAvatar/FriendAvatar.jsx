@@ -1,3 +1,4 @@
+
 function FriendAvatar(props) {
     const avatarStyle = {
         width: '50px',
@@ -9,13 +10,22 @@ function FriendAvatar(props) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }
+    }
+
+    const avatarImgStyle = {
+        height: '50px',
+        width: '50px',
+        borderRadius: '50%',
+    }
       
     return (
         <div style = {avatarStyle}>
-            {props.initials}
+
+            { props.avatarImageUrl === null ? props.initials : <img  style={avatarImgStyle} src={props.avatarImageUrl} /> }
+ 
         </div>
     )
 }
 
 export default FriendAvatar;
+

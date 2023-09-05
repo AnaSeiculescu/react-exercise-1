@@ -23,11 +23,12 @@ function UserFriend(props) {
   }
   let displayName = props.firstName + ' ' + props.lastName;
   let initials = props.firstName.charAt(0) + props.lastName.charAt(0);
+  let avatar = props.src;
   return (
     <div 
         style = {containerStyle}
     >
-      <FriendAvatar initials={initials} />
+      <FriendAvatar initials={initials} avatarImageUrl={avatar} />
       <span style = {nameStyle} >{displayName}</span>
     </div>
   );
@@ -38,13 +39,12 @@ function App() {
   return(
     <>
     {mockFriends.map((friend) => 
-      <UserFriend key={friend.id} firstName={friend.firstName} lastName={friend.lastName} />
+      <UserFriend key={friend.id} firstName={friend.firstName} lastName={friend.lastName} src={friend.avatarUrl} />
     )}
     </>
   )
   
 }
-
 
 export default App;
 

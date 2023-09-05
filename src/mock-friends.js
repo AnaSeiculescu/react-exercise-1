@@ -20,14 +20,16 @@ const mockFriends = [
         firstName: 'Sara',
         lastName: 'Beer',
         dateOfBirth: '1998-03-28',
-        description: 'Cred in prietenii mei.'
+        description: 'Cred in prietenii mei.',
+        avatarUrl: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
     },
     {
         id: 4,
         firstName: 'Eloise',
         lastName: 'Bridgerton',
         dateOfBirth: '2001-11-13',
-        description: 'Te cunosc de undeva.'
+        description: 'Te cunosc de undeva.',
+        avatarUrl: null,
     }
 ]
 
