@@ -27,8 +27,8 @@ function App() {
     return(
       <>
         <h3>My friends</h3>
-        
-        {isLoadingFriends && <Loading />}
+
+        {isLoadingFriends && <Loading speed={500} />}
         {friendsList.map((friend) => 
           <UserFriend key={friend.id} firstName={friend.firstName} lastName={friend.lastName} src={friend.avatarUrl} />
         )}

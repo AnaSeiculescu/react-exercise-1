@@ -19,7 +19,7 @@ export const getFriends = async () => {
     })
     // const data = mockFriends.map(({ id, firstName, lastName, avatarUrl }) => ({ id, firstName, lastName, avatarUrl }))
 
-    await wait(3000) // server delay
+    await wait(12000) // server delay
 
     return data
 }
