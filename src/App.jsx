@@ -1,51 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import UserFriend from './components/UserFriend/UserFriend';
 import './App.css';
-import mockFriends from './mock-friends';
-import FriendAvatar from './components/FriendAvatar/FriendAvatar';
+import { useState, useEffect } from 'react';
+import { getFriends } from './mocks/api';
+import Loading from './components/Loading/Loading';
 
-function UserFriend(props) {
-  const containerStyle = {
-    width: "250px",
-    height: "67px",
-    border: "2px solid black",
-    borderRadius: "12px",
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '15px'
-  }
-  
-  const nameStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    flexGrow: '1'
-  }
-  let displayName = props.firstName + ' ' + props.lastName;
-  let initials = props.firstName.charAt(0) + props.lastName.charAt(0);
-  let avatar = props.src;
-  return (
-    <div 
-        style = {containerStyle}
-    >
-      <FriendAvatar initials={initials} avatarImageUrl={avatar} />
-      <span style = {nameStyle} >{displayName}</span>
-    </div>
-  );
-}
 
 function App() {
+  const [friendsList, setFriendsList] = useState([]);
+  const [isLoadingFriends, setIsLoadingFriends] = useState(true);
 
-  return(
-    <>
-    {mockFriends.map((friend) => 
-      <UserFriend key={friend.id} firstName={friend.firstName} lastName={friend.lastName} src={friend.avatarUrl} />
-    )}
-    </>
-  )
+  useEffect(() => {
+    // se aduc datele de la server
+    // fetch('http://moastapegheata/da-mi-datele').then(datele => {
+    //   // baga datele in pagina
+    // })
+    console.log('s-a rulat efectul')
+
+    getFriends().then(friends => {
+      console.log('my friends list:')
+      console.log(friends);
+      setFriendsList(friends);
+      setIsLoadingFriends(false);
+    })
+  }, []);
+
+    return(
+      <>
+        <h3>My friends</h3>
+        
+        {isLoadingFriends && <Loading />}
+        {friendsList.map((friend) => 
+          <UserFriend key={friend.id} firstName={friend.firstName} lastName={friend.lastName} src={friend.avatarUrl} />
+        )}
+      </>
+    )
   
 }
 
 export default App;
-
-
